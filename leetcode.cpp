@@ -1,9 +1,9 @@
 //============================================================================
-// Name        : two.cpp
+// Name        : leetcode.cpp
 // Author      : Sadık EĞRİ
 // Version     :
 // Copyright   : Your copyright notice
-// Description : Problem: https://leetcode.com/problems/two-sum/
+// Description : Problems: https://leetcode.com/
 //============================================================================
 #include<iostream>
 #include <vector> //vector lib enables push_back, pop_back, insert, erase funtions. useul for arrays;
@@ -74,12 +74,9 @@ public:
 	}
 
 	bool isvalid(string s){
-		// find indeses of all paranteshesis types
-		stack<char> stackOfParanthesis; // co cc -- no nc  -- so sc
+		stack<char> stackOfParanthesis; 
 		stackOfParanthesis.push('a');
-		// vector<int> indeces0fsquare;
-		// vector<int> indeces0fnormal;
-		// vector<int> indeces0fcurly;
+
 		for(int i=0;i<s.length();i++){
 			if (s[i]=='[') stackOfParanthesis.push('[');
 			if (s[i]==']'){
