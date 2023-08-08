@@ -1,7 +1,8 @@
 {
     "C_Cpp.default.compilerPath": "c:\\Users\\Administrator\\Desktop\\Cpp leetcode\\leetcode2\\leetcode.cpp",
     "files.associations": {
-        "iostream": "cpp"
+        "iostream": "cpp",
+        "*.tcc": "cpp"
     },
     "C_Cpp.errorSquiggles": "enabled",
     "git.ignoreLimitWarning": true

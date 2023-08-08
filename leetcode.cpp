@@ -7,6 +7,8 @@
 #include<iostream>
 #include <vector> //vector lib enables push_back, pop_back, insert, erase funtions. useul for arrays;
 #include<stack>
+#include<algorithm>
+
 using namespace std;
 
 class leetcode{
@@ -110,7 +112,6 @@ public:
 
     }
 	double myPow(double x, int n) {
-		
 		double res=1;
         for (long int i=0;i<abs(n);i++){
 			res*=x;
@@ -118,16 +119,33 @@ public:
 		if (n>=0) return res;
 		else return (1/res);
     }
+	bool isPalindrome(int x) {
+		string s;
+		string rs;
+		try
+		{
+			s=to_string(x);
+			rs=s;
+		}
+		catch(const std::exception& e)
+		{
+			std::cerr << e.what() << '\n';
+		}
+
+		reverse(rs.begin(),rs.end());
+		cout<<rs<<endl;
+		if (s==rs) return true;
+		else return false;
+    }
+		
+        
 };
 
 
 	int main() {
-		vector<int> prices = {5,6,4654,21};
 		leetcode object1;
 
-		cout<<"Max Profit: "<<object1.maxProfit(prices)<<endl;
-
-
+		cout<<object1.isPalindrome(155)<<endl;
 
 		return 0;
 	};
