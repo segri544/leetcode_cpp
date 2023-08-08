@@ -1,4 +1,3 @@
-//============================================================================
 // Name        : leetcode.cpp
 // Author      : Sadık EĞRİ
 // Version     :
@@ -95,19 +94,39 @@ public:
 		}
 		return (stackOfParanthesis.top()=='a');
 	}
+	int maxProfit(vector<int>& prices) { // time problem use better algorithm using max() remove second loop
+  
+		int lenght = size(prices);
+		int profit=0,highest;
+		for (int i=0;i<lenght;i++){
+			highest=prices[i];
+			for(int j=i;j<lenght;j++){
+				if (prices[j]>highest) highest=prices[j]; 
+			}
+			if (highest-prices[i]>profit) profit =highest-prices[i];
+
+		}
+		return profit;
+
+    }
+	double myPow(double x, int n) {
+		
+		double res=1;
+        for (long int i=0;i<abs(n);i++){
+			res*=x;
+		}
+		if (n>=0) return res;
+		else return (1/res);
+    }
 };
 
 
 	int main() {
-		string s="(dasdsa)";
-		for (int i=0;i<s.length();i++){
-			cout<<s[i]<<endl;
-		}
-		cout<<typeid(s[0]).name()<<endl;
-		leetcode object;
+		vector<int> prices = {5,6,4654,21};
+		leetcode object1;
 
-		bool checkisvalid=object.isvalid(s);
-		cout <<checkisvalid<<endl;
+		cout<<"Max Profit: "<<object1.maxProfit(prices)<<endl;
+
 
 
 		return 0;
