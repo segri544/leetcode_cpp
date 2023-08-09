@@ -8,7 +8,7 @@
 #include <vector> //vector lib enables push_back, pop_back, insert, erase funtions. useul for arrays;
 #include<stack>
 #include<algorithm>
-
+#include <unordered_set>
 using namespace std;
 
 class leetcode{
@@ -17,7 +17,7 @@ public:
 
 		vector<int> res;
 		int i,j;
-		int lenght=std::size(numbers);
+		int lenght=size(numbers);
 		int flag;
 		for (i=0;i<lenght;i++){
 			for(j=i+1;j<lenght;j++){
@@ -137,7 +137,15 @@ public:
 		if (s==rs) return true;
 		else return false;
     }
-		
+
+	bool containsDuplicate(vector<int>& nums) {
+		unordered_set<int> numSet;	// ♥ hash tables ♥
+		for (int num:nums){
+			if(numSet.count(num)>0) return true;
+			numSet.insert(num);
+		}
+		return false;
+    }
         
 };
 
@@ -145,7 +153,8 @@ public:
 	int main() {
 		leetcode object1;
 
-		cout<<object1.isPalindrome(155)<<endl;
+		vector<int> nums = {1,2,3,1};
+		cout<<"res: "<< object1.containsDuplicate(nums);
 
 		return 0;
 	};
