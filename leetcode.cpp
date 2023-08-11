@@ -4,12 +4,62 @@
 // Copyright   : Your copyright notice
 // Description : Problems: https://leetcode.com/
 //============================================================================
+
+/*
+Arrays:
+
+C++ Arrays: Standard C++ arrays are built-in and don't require any additional libraries.
+std::array: A fixed-size array with a more modern interface.
+Linked Lists:
+
+std::list: Doubly-linked list implementation in the C++ Standard Library.
+Stacks:
+
+std::stack: A stack container adapter in the C++ Standard Library.
+Queues:
+
+std::queue: A queue container adapter in the C++ Standard Library.
+std::deque: Double-ended queue implementation.
+Trees:
+
+Binary Search Trees (BSTs) can be implemented using custom code or libraries.
+Heaps:
+
+std::priority_queue: A priority queue container adapter in the C++ Standard Library.
+Graphs:
+
+Graphs are usually implemented using custom code. You can use std::vector or std::map to represent adjacency lists or matrices.
+Tries:
+
+Custom implementation is often used for tries.
+Hash Maps (Dictionaries):
+
+std::unordered_map: Hash map implementation in the C++ Standard Library.
+std::unordered_set: Hash set implementation in the C++ Standard Library.
+Sets:
+
+std::set: Binary search tree-based set in the C++ Standard Library.
+Deques:
+
+std::deque: Double-ended queue implementation in the C++ Standard Library.
+*/
 #include<iostream>
 #include <vector> //vector lib enables push_back, pop_back, insert, erase funtions. useul for arrays;
 #include<stack>
 #include<algorithm>
-#include <unordered_set>
+#include <unordered_set> // hash table
+#include<list> // linked list
 using namespace std;
+
+#define RESET   "\033[0m"
+#define BOLD    "\033[1m"
+
+#define RED     "\033[31m"
+#define GREEN   "\033[32m"
+#define YELLOW  "\033[33m"
+#define BLUE    "\033[34m"
+#define MAGENTA "\033[35m"
+#define CYAN    "\033[36m"
 
 class leetcode{
 public:
@@ -146,15 +196,39 @@ public:
 		}
 		return false;
     }
-        
+	bool searchMatrix(vector<vector<int>>& matrix, int target) {
+        int m = matrix.size();
+		int n = matrix[0].size();
+
+		int left = 0;
+		int right = m * n - 1;
+
+		while (left <= right) {
+			int mid = left + (right - left) / 2;
+			int midValue = matrix[mid / n][mid % n];
+
+			if (midValue == target) {
+				return true;
+			} else if (midValue < target) {
+				left = mid + 1;
+			} else {
+				right = mid - 1;
+			}
+		}
+
+		return false;
+    }
+   
 };
 
 
 	int main() {
 		leetcode object1;
+		std::vector<std::vector<int>> matrix = {{1,1}};
+    	int target = 3;
 
-		vector<int> nums = {1,2,3,1};
-		cout<<"res: "<< object1.containsDuplicate(nums);
 
+    	bool result = object1.searchMatrix(matrix, target);
+    	std::cout << "Output: " << (result ? "true" : "false") << std::endl;
 		return 0;
 	};
